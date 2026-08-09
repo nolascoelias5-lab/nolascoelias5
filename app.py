@@ -928,24 +928,207 @@ st.set_page_config(
 st.markdown(
     """
     <style>
+    :root {
+        --iy-blue: #2F80ED;
+        --iy-blue-dark: #1F5FAF;
+        --iy-sky: #EAF4FF;
+        --iy-turquoise: #2EC4B6;
+        --iy-mint: #EAFBF7;
+        --iy-yellow: #FFD166;
+        --iy-cream: #FFF9E8;
+        --iy-navy: #17324D;
+        --iy-text: #243447;
+        --iy-muted: #64748B;
+        --iy-border: #D9E7F5;
+        --iy-white: #FFFFFF;
+        --iy-bg: #F6FAFE;
+    }
+
+    /* Fondo general */
+    .stApp {
+        background: linear-gradient(180deg, #F8FBFF 0%, #F3F9FD 100%);
+        color: var(--iy-text);
+    }
+
+    /* Contenedor principal */
+    .block-container {
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+        max-width: 1200px;
+    }
+
+    /* Sidebar */
+    section[data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #EAF4FF 0%, #F6FBFF 100%);
+        border-right: 1px solid var(--iy-border);
+    }
+
+    section[data-testid="stSidebar"] * {
+        color: var(--iy-navy);
+    }
+
+    /* Títulos */
+    h1, h2, h3, h4 {
+        color: var(--iy-navy) !important;
+        letter-spacing: -0.02em;
+    }
+
     .main-title {
-        font-size: 2.2rem;
-        font-weight: 800;
-        margin-bottom: 0.2rem;
+        font-size: 2.45rem;
+        font-weight: 850;
+        color: var(--iy-blue-dark);
+        margin-bottom: 0.15rem;
+        line-height: 1.1;
     }
+
     .subtitle {
-        opacity: 0.75;
-        margin-bottom: 1.5rem;
+        color: var(--iy-muted);
+        margin-bottom: 1.4rem;
+        font-size: 1rem;
     }
+
+    /* Tarjetas */
     .section-card {
-        border: 1px solid rgba(128,128,128,0.25);
-        border-radius: 14px;
-        padding: 1rem 1.1rem;
+        background: var(--iy-white);
+        border: 1px solid var(--iy-border);
+        border-radius: 16px;
+        padding: 1.1rem 1.2rem;
         margin-bottom: 0.9rem;
+        box-shadow: 0 4px 14px rgba(47, 128, 237, 0.06);
     }
+
     .small-muted {
-        opacity: 0.7;
+        color: var(--iy-muted);
         font-size: 0.9rem;
+    }
+
+    /* Tabs */
+    button[data-baseweb="tab"] {
+        background: #FFFFFF;
+        border-radius: 12px 12px 0 0;
+        color: var(--iy-navy);
+        margin-right: 0.2rem;
+    }
+
+    button[data-baseweb="tab"][aria-selected="true"] {
+        background: var(--iy-sky);
+        color: var(--iy-blue-dark) !important;
+        font-weight: 700;
+        border-bottom: 3px solid var(--iy-blue);
+    }
+
+    /* Expanders */
+    details {
+        background: #FFFFFF;
+        border: 1px solid var(--iy-border) !important;
+        border-radius: 12px !important;
+    }
+
+    details summary {
+        color: var(--iy-navy);
+        font-weight: 600;
+    }
+
+    /* Inputs y selectboxes */
+    div[data-baseweb="select"] > div,
+    textarea,
+    input {
+        background: #FFFFFF !important;
+        color: var(--iy-text) !important;
+        border-color: var(--iy-border) !important;
+        border-radius: 10px !important;
+    }
+
+    /* Botones */
+    .stButton > button {
+        background: linear-gradient(90deg, var(--iy-blue) 0%, #4B9CF5 100%);
+        color: #FFFFFF !important;
+        border: none;
+        border-radius: 10px;
+        font-weight: 700;
+        padding: 0.55rem 1rem;
+        box-shadow: 0 4px 12px rgba(47, 128, 237, 0.18);
+    }
+
+    .stButton > button:hover {
+        background: var(--iy-blue-dark);
+        color: #FFFFFF !important;
+        border: none;
+    }
+
+    /* Métricas */
+    div[data-testid="stMetric"] {
+        background: #FFFFFF;
+        border: 1px solid var(--iy-border);
+        border-radius: 14px;
+        padding: 0.8rem 1rem;
+    }
+
+    /* Alertas */
+    div[data-testid="stAlert"] {
+        border-radius: 12px;
+    }
+
+    /* Progreso */
+    div[data-testid="stProgress"] > div > div > div {
+        background: linear-gradient(90deg, var(--iy-turquoise), var(--iy-blue));
+    }
+
+    /* Texto normal */
+    p, li, label, .stMarkdown, .stText {
+        color: var(--iy-text);
+    }
+
+    /* Captions */
+    .stCaption, [data-testid="stCaptionContainer"] {
+        color: var(--iy-muted) !important;
+    }
+
+    /* Separadores */
+    hr {
+        border-color: var(--iy-border) !important;
+    }
+
+    /* Tarjeta de bienvenida */
+    .hero-card {
+        background: linear-gradient(135deg, #FFFFFF 0%, #EAF4FF 60%, #EAFBF7 100%);
+        border: 1px solid var(--iy-border);
+        border-radius: 20px;
+        padding: 1.35rem 1.45rem;
+        margin-bottom: 1.2rem;
+        box-shadow: 0 8px 24px rgba(47, 128, 237, 0.08);
+    }
+
+    .hero-badge {
+        display: inline-block;
+        background: var(--iy-cream);
+        color: #8A6200;
+        border: 1px solid #FFE39A;
+        padding: 0.28rem 0.65rem;
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        margin-bottom: 0.65rem;
+    }
+
+    .level-chip {
+        display: inline-block;
+        background: var(--iy-mint);
+        color: #147D73;
+        border: 1px solid #BFEFE6;
+        padding: 0.24rem 0.55rem;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 700;
+    }
+
+    /* Oculta el fondo oscuro residual de algunos widgets */
+    [data-testid="stHeader"] {
+        background: rgba(248, 251, 255, 0.92);
+    }
+
+    footer {
+        visibility: hidden;
     }
     </style>
     """,
@@ -998,9 +1181,15 @@ if cap_num in st.session_state.completados:
 # ----------------------------
 # Encabezado
 # ----------------------------
-st.markdown('<div class="main-title">Português do Brasil</div>', unsafe_allow_html=True)
 st.markdown(
-    '<div class="subtitle">Curso completo para hispanohablantes · A0 → C1</div>',
+    """
+    <div class="hero-card">
+        <div class="hero-badge">APRENDE PASO A PASO</div>
+        <div class="main-title">🇧🇷 Português do Brasil</div>
+        <div class="subtitle">Curso completo para hispanohablantes · A0 → C1</div>
+        <span class="level-chip">Método claro · práctico · progresivo</span>
+    </div>
+    """,
     unsafe_allow_html=True
 )
 
