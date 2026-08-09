@@ -929,24 +929,24 @@ st.markdown(
     """
     <style>
     :root {
-        --iy-blue: #2F80ED;
-        --iy-blue-dark: #1F5FAF;
-        --iy-sky: #EAF4FF;
-        --iy-turquoise: #2EC4B6;
-        --iy-mint: #EAFBF7;
-        --iy-yellow: #FFD166;
-        --iy-cream: #FFF9E8;
-        --iy-navy: #17324D;
-        --iy-text: #243447;
-        --iy-muted: #64748B;
-        --iy-border: #D9E7F5;
+        --iy-blue: #173F73;
+        --iy-blue-dark: #0D2E59;
+        --iy-sky: #EEF4F8;
+        --iy-turquoise: #168A3B;
+        --iy-mint: #EAF6EC;
+        --iy-yellow: #F5C518;
+        --iy-cream: #FFF7D6;
+        --iy-navy: #102F52;
+        --iy-text: #263746;
+        --iy-muted: #66727D;
+        --iy-border: #D7E2D8;
         --iy-white: #FFFFFF;
-        --iy-bg: #F6FAFE;
+        --iy-bg: #F7F8F3;
     }
 
     /* Fondo general */
     .stApp {
-        background: linear-gradient(180deg, #F8FBFF 0%, #F3F9FD 100%);
+        background: linear-gradient(180deg, #FFFDF5 0%, #F3F8F1 100%);
         color: var(--iy-text);
     }
 
@@ -959,7 +959,7 @@ st.markdown(
 
     /* Sidebar */
     section[data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #EAF4FF 0%, #F6FBFF 100%);
+        background: linear-gradient(180deg, #E8F4E9 0%, #FFF9E1 100%);
         border-right: 1px solid var(--iy-border);
     }
 
@@ -1012,9 +1012,9 @@ st.markdown(
 
     button[data-baseweb="tab"][aria-selected="true"] {
         background: var(--iy-sky);
-        color: var(--iy-blue-dark) !important;
+        color: #0D6B31 !important;
         font-weight: 700;
-        border-bottom: 3px solid var(--iy-blue);
+        border-bottom: 3px solid #F5C518;
     }
 
     /* Expanders */
@@ -1041,7 +1041,7 @@ st.markdown(
 
     /* Botones */
     .stButton > button {
-        background: linear-gradient(90deg, var(--iy-blue) 0%, #4B9CF5 100%);
+        background: linear-gradient(90deg, #168A3B 0%, #0D6B31 100%);
         color: #FFFFFF !important;
         border: none;
         border-radius: 10px;
@@ -1091,7 +1091,7 @@ st.markdown(
 
     /* Tarjeta de bienvenida */
     .hero-card {
-        background: linear-gradient(135deg, #FFFFFF 0%, #EAF4FF 60%, #EAFBF7 100%);
+        background: linear-gradient(135deg, #FFFFFF 0%, #FFF7D6 48%, #EAF6EC 100%);
         border: 1px solid var(--iy-border);
         border-radius: 20px;
         padding: 1.35rem 1.45rem;
@@ -1124,7 +1124,7 @@ st.markdown(
 
     /* Oculta el fondo oscuro residual de algunos widgets */
     [data-testid="stHeader"] {
-        background: rgba(248, 251, 255, 0.92);
+        background: rgba(255, 253, 245, 0.94);
     }
 
     footer {
@@ -1147,6 +1147,7 @@ if "notas" not in st.session_state:
 # ----------------------------
 # Sidebar
 # ----------------------------
+st.sidebar.image("assets/mascota_portugues_ya.png", use_container_width=True)
 st.sidebar.markdown("## 🇧🇷 Curso")
 niveles = ["A0", "A1", "A2", "B1", "B2", "C1"]
 nivel_sel = st.sidebar.selectbox("Nivel", niveles)
@@ -1181,17 +1182,27 @@ if cap_num in st.session_state.completados:
 # ----------------------------
 # Encabezado
 # ----------------------------
-st.markdown(
-    """
-    <div class="hero-card">
-        <div class="hero-badge">APRENDE PASO A PASO</div>
-        <div class="main-title">🇧🇷 Português do Brasil</div>
-        <div class="subtitle">Curso completo para hispanohablantes · A0 → C1</div>
-        <span class="level-chip">Método claro · práctico · progresivo</span>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+hero_text, hero_mascot = st.columns([2.2, 1])
+
+with hero_text:
+    st.markdown(
+        """
+        <div class="hero-card">
+            <div class="hero-badge">APRENDE PASO A PASO</div>
+            <div class="main-title">🇧🇷 Português do Brasil</div>
+            <div class="subtitle">Curso completo para hispanohablantes · A0 → C1</div>
+            <span class="level-chip">Método claro · práctico · progresivo</span>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+with hero_mascot:
+    st.image(
+        "assets/mascota_portugues_ya.png",
+        caption="Português ¡YA!",
+        use_container_width=True
+    )
 
 col1, col2 = st.columns([3, 1])
 with col1:
