@@ -1,16 +1,12 @@
-# Português ¡YA! — Streamlit
+# Português ¡YA!
 
-Sube a GitHub **todos los archivos y la carpeta `assets`** conservando esta estructura:
+Versión autocontenida para Streamlit.
 
-```text
-/
-├── app.py
-├── requirements.txt
-├── runtime.txt
-├── .gitignore
-├── README.md
-└── assets/
-    └── mascota_portugues_ya.png
-```
+La mascota está integrada dentro de `app.py`, por lo que NO necesitas crear ni subir una carpeta `assets`.
 
-En Streamlit Community Cloud usa `app.py` como Main file path.
+Archivos necesarios:
+- app.py
+- requirements.txt
+- runtime.txt
+
+Main file path en Streamlit: `app.py`
