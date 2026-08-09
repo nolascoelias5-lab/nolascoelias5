@@ -922,6 +922,12 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+
+# Ruta robusta para archivos del proyecto en Streamlit Cloud
+BASE_DIR = Path(__file__).resolve().parent
+MASCOTA_PATH = BASE_DIR / "assets" / "mascota_portugues_ya.png"
+
+
 # ----------------------------
 # Estilos
 # ----------------------------
@@ -1147,7 +1153,10 @@ if "notas" not in st.session_state:
 # ----------------------------
 # Sidebar
 # ----------------------------
-st.sidebar.image("assets/mascota_portugues_ya.png", use_container_width=True)
+if MASCOTA_PATH.exists():
+    st.sidebar.image(str(MASCOTA_PATH), use_container_width=True)
+else:
+    st.sidebar.info("🇧🇷 Português ¡YA!")
 st.sidebar.markdown("## 🇧🇷 Curso")
 niveles = ["A0", "A1", "A2", "B1", "B2", "C1"]
 nivel_sel = st.sidebar.selectbox("Nivel", niveles)
@@ -1198,11 +1207,14 @@ with hero_text:
     )
 
 with hero_mascot:
-    st.image(
-        "assets/mascota_portugues_ya.png",
-        caption="Português ¡YA!",
-        use_container_width=True
-    )
+    if MASCOTA_PATH.exists():
+        st.image(
+            str(MASCOTA_PATH),
+            caption="Português ¡YA!",
+            use_container_width=True
+        )
+    else:
+        st.info("🇧🇷 Mascota no encontrada. La aplicación seguirá funcionando.")
 
 col1, col2 = st.columns([3, 1])
 with col1:
